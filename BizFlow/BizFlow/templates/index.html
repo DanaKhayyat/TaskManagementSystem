@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد | BizFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #f5f2ee; /* نفس بيج الموقع الرئيسي */
+            font-family: 'Almarai', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0;
+        }
+
+        .card { 
+            background-color: #ffffff; /* خلفية بيضاء صافية للمربع */
+            padding: 40px 35px; 
+            border-radius: 20px; 
+            width: 90%; 
+            max-width: 400px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* ظل ناعم جداً */
+            text-align: center;
+            border: 1px solid rgba(63, 64, 60, 0.1);
+        }
+
+        .title { 
+            font-size: 24px; 
+            font-weight: 700; 
+            margin-bottom: 30px; 
+            color: #3f403c; 
+            display: inline-block;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3f403c; /* خط نحيف تحت العنوان */
+        }
+
+        .input-group { margin-bottom: 20px; text-align: right; }
+
+        .label { 
+            font-size: 14px; 
+            font-weight: 400; 
+            color: #3f403c; 
+            margin-bottom: 8px; 
+            display: block; 
+        }
+
+        .input { 
+            width: 100%; 
+            height: 48px; 
+            border: 1px solid rgba(63, 64, 60, 0.2); 
+            border-radius: 10px; 
+            padding: 0 15px; 
+            background-color: #faf9f7; 
+            box-sizing: border-box; 
+            font-size: 15px; 
+            text-align: right;
+            color: #3f403c;
+            font-family: 'Almarai', sans-serif;
+            transition: 0.3s;
+        }
+
+        .input:focus { 
+            outline: none; 
+            border-color: #3f403c;
+            background-color: #ffffff;
+        }
+
+        .button { 
+            background-color: #3f403c; 
+            width: 100%; 
+            height: 50px; 
+            border-radius: 10px; 
+            border: none; 
+            color: #ffffff; 
+            font-size: 16px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            margin-top: 10px; 
+            font-family: 'Almarai', sans-serif;
+            transition: 0.3s ease; 
+        }
+
+        .button:hover { 
+            background-color: #1a1b1a; 
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #3f403c;
+            text-decoration: none;
+            opacity: 0.7;
+        }
+        
+        .back-link:hover { opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="title">إنشاء حساب جديد</div>
+        
+        <form action="/save_user" method="POST" autocomplete="off">
+            
+            <div class="input-group">
+                <label class="label">اسم المستخدم</label>
+                <input type="text" name="u_name" class="input" placeholder="أدخل اسمك الكامل" required>
+            </div>
+
+
+            <div class="input-group">
+                <label class="label">رقم الهاتف</label>
+                <input type="text" name="u_phone" class="input" placeholder="05xxxxxxxx" required>
+            </div>
+            
+      <div class="input-group">
+                <label class="label">البريد الإلكتروني</label>
+                <input type="email" name="u_email" class="input" placeholder="BizFlow@gmail.com" required>
+            </div>
+            <div class="input-group">
+                <label class="label">كلمة المرور</label>
+                <input type="password" name="u_pass" class="input" placeholder="********" required autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="button">التالي</button>
+        </form>
+
+        <a href="#" onclick="history.back()" class="back-link">العودة للرئيسية</a>
+    </div>
+</body>
+</html>

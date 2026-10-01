@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إكمال بيانات البزنس</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* التنسيق الجديد بناءً على ألوان الموقع */
+        body { 
+            background-color: #f5f2ee; /* لون البيج الموحد */
+            font-family: 'Almarai', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0;
+        }
+
+        .container { 
+            background-color: #ffffff; /* المربع الأبيض النظيف */
+            padding: 40px 30px; 
+            border-radius: 20px; 
+            width: 85%; 
+            max-width: 400px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid rgba(63, 64, 60, 0.1);
+        }
+
+        h2 { 
+            font-size: 22px; 
+            font-weight: 700; 
+            margin-bottom: 30px; 
+            color: #3f403c; 
+            display: inline-block;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3f403c; /* خط نحيف تحت العنوان */
+        }
+
+        .input-group { 
+            margin-bottom: 20px; 
+            text-align: right; 
+        }
+
+        label { 
+            font-size: 14px; 
+            font-weight: 400; 
+            color: #3f403c; 
+            margin-bottom: 8px; 
+            display: block; 
+            padding-right: 5px;
+        }
+
+        input, textarea { 
+            width: 100%; 
+            border: 1px solid rgba(63, 64, 60, 0.2); 
+            border-radius: 10px; 
+            padding: 12px 15px; 
+            background-color: #faf9f7; 
+            box-sizing: border-box; 
+            font-size: 15px; 
+            text-align: right;
+            color: #3f403c;
+            font-family: inherit;
+            transition: 0.3s ease;
+        }
+
+        input:focus, textarea:focus { 
+            outline: none; 
+            background-color: #ffffff;
+            border-color: #3f403c;
+        }
+
+        button { 
+            background-color: #3f403c; 
+            color: white; 
+            border: none; 
+            padding: 15px; 
+            width: 100%; 
+            border-radius: 10px; 
+            font-size: 17px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            margin-top: 10px; 
+            transition: 0.3s ease; 
+            font-family: 'Almarai', sans-serif;
+        }
+
+        button:hover { 
+            background-color: #1a1b1a; 
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> بيانات النشاط </h2>
+        
+        <form action="/save_business_data" method="POST">
+            <input type="hidden" name="phone" value="{{ phone }}">
+            
+            <div class="input-group">
+                <label>اسم النشاط:</label>
+                <input type="text" name="business_name" placeholder=" " required>
+            </div>
+            
+            <div class="input-group">
+                <label>وصف النشاط:</label>
+                <textarea name="business_desc" rows="4" placeholder=" "></textarea>
+            </div>
+            
+            <button type="submit">إنشاء حساب </button>
+        </form>
+    </div>
+</body>
+</html>

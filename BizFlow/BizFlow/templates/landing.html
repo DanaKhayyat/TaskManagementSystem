@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-beige: #f5f2ee;
+            --dark-gray: #3f403c;
+            --pure-white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Almarai', sans-serif; 
+            margin: 0; 
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: var(--bg-beige);
+        }
+
+        header {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 12px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-sizing: border-box; z-index: 1000;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.02);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-area img {
+            height: 40px;
+            width: auto;
+        }
+
+        .btn-top {
+            background: var(--dark-gray); color: white;
+            padding: 8px 20px; border-radius: 6px;
+            text-decoration: none; font-size: 13px; font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-top:hover { background: #000; transform: scale(1.05); }
+
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 {
+            font-size: 24px; font-weight: 400; display: inline-block;
+            margin: 0; padding-bottom: 6px;
+            border-bottom: 2px solid var(--dark-gray);
+        }
+
+        .hero { padding: 180px 5% 100px; text-align: center; }
+        .hero h1 { font-size: 48px; font-weight: 700; margin: 0; }
+        
+        #typewriter {
+            font-size: 18px; font-weight: 300; opacity: 0.8;
+            min-height: 1.6em; margin-top: 15px;
+        }
+
+        .content-block { padding: 90px 10%; text-align: center; width: 100%; box-sizing: border-box; }
+        .white-bg { background-color: var(--pure-white); }
+        .beige-bg { background-color: var(--bg-beige); }
+
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; max-width: 1100px; margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--pure-white);
+            padding: 40px 30px; border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover { 
+            background-color: var(--dark-gray);
+            color: var(--pure-white);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .steps-wrapper { 
+            display: flex; justify-content: center; 
+            gap: 60px; flex-wrap: wrap; margin-top: 40px; 
+        }
+        .step-circle { 
+            width: 50px; height: 50px; 
+            border: 1.5px solid var(--dark-gray);
+            color: var(--dark-gray); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 15px; font-weight: 700; font-size: 18px;
+        }
+
+        .footer-dark {
+            background: var(--dark-gray); color: #dad8d6;
+            padding: 70px 10% 30px; border-radius: 40px 40px 0 0;
+            margin-top: 50px;
+        }
+        .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+        .footer-logo h2 { color: #fff; font-size: 28px; }
+
+        .copyright {
+            text-align: center; margin-top: 50px; padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.05); font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+          
+            <div style="font-size: 20px; font-weight: 700;">BizFlow</div>
+        </div>
+        <a href="/register" class="btn-top">إنشاء حساب</a>
+    </header>
+
+    <section class="hero">
+        <h1>BizFlow</h1>
+        <p id="typewriter"></p>
+    </section>
+
+    <section class="content-block white-bg">
+        <div class="section-header"><h2>من نحن</h2></div>
+        <p style="font-size: 18px; font-weight: 300; max-width: 850px; margin: 0 auto;">
+            نحن نوفر لأصحاب الأعمال نظاماً متطوراً يساعدهم على تنظيم المواعيد، وإدارة الحجوزات، والتواصل مع العملاء في مكان واحد، لتبسيط العمل اليومي وتوفير الوقت باستخدام حلول تقنية ذكية.
+        </p>
+    </section>
+
+    <section class="content-block beige-bg">
+        <div class="section-header"><h2>المميزات</h2></div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>لوحة تحكم</h3>
+                <p style="font-size: 14.5px; font-weight: 300;">واجهة سهلة ومرنة تمنحك السيطرة الكاملة على كافة بيانات ومواعيد مشروعك.</p>
+            </div>
+            <div class="feature-card">
+                <h3>تنظيم المواعيد</h3>
+                <p style="font-size: 14.5px; font-weight: 300;">تقويم تفاعلي ذكي يمنحك رؤية واضحة لجدول أعمالك اليومي بكل سلاسة.</p>
+            </div>
+            <div class="feature-card">
+                <h3>إحصائيات دقيقة</h3>
+                <p style="font-size: 14.5px; font-weight: 300;">تحليل شامل ومبسط لأداء نشاطك التجاري لمعرفة حجم النمو والخدمات المطلوبة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-block white-bg">
+        <div class="section-header"><h2>كيف يعمل النظام؟</h2></div>
+        <div class="steps-wrapper">
+            <div style="text-align: center; min-width: 140px;">
+                <div class="step-circle">1</div>
+                <div>إنشاء الحساب</div>
+            </div>
+            <div style="text-align: center; min-width: 140px;">
+                <div class="step-circle">2</div>
+                <div>إضافة الخدمات</div>
+            </div>
+            <div style="text-align: center; min-width: 140px;">
+                <div class="step-circle">3</div>
+                <div>استقبال الحجوزات</div>
+            </div>
+            <div style="text-align: center; min-width: 140px;">
+                <div class="step-circle">4</div>
+                <div>إدارة العمل</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-dark">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <h2>BizFlow</h2>
+                <p>نحو إدارة أعمال أكثر كفاءة، ذكاءً وتنظيماً.</p>
+            </div>
+            <div>
+                <h3 style="color: #fff; margin-bottom: 15px; font-size: 18px;">تواصل معنا</h3>
+                <p style="font-size: 15px; margin: 8px 0;">bizflow@gmail.com</p>
+                <p style="font-size: 15px; margin: 8px 0;">0514451000</p>
+                <p style="font-size: 15px; margin: 8px 0;">المملكة العربية السعودية</p>
+            </div>
+        </div>
+        <div class="copyright">© 2026 BizFlow – جميع الحقوق محفوظة</div>
+    </footer>
+
+    <script>
+        const text = "إدارة ذكية للحجوزات والمواعيد عبر الواتساب للمشاريع الناشئة";
+        let index = 0;
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 40); 
+            }
+        }
+        window.onload = typeWriter;
+    </script>
+
+</body>
+</html>

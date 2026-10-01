@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة الحجز الخاصة</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fdfbf7; padding: 20px; text-align: center; color: #333; }
+        .card { background: white; padding: 30px; border-radius: 20px; max-width: 450px; margin: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        h2 { color: #4a4a4a; margin-bottom: 25px; }
+        label { display: block; text-align: right; margin: 10px 5px 5px; font-weight: bold; font-size: 0.9em; }
+        input, select, button { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ddd; box-sizing: border-box; font-size: 1em; }
+        input:focus, select:focus { outline: none; border-color: #a1887f; }
+        
+        #serviceDescDisplay { 
+            text-align: right; 
+            font-size: 0.85em; 
+            color: #71726e; 
+            margin-top: -10px; 
+            margin-bottom: 15px; 
+            padding-right: 5px;
+            line-height: 1.4;
+        }
+
+        button { background-color: #3f403c; color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.3s; margin-top: 10px; }
+        button:hover { background-color: #575853; }
+        .footer-text { font-size: 0.8em; color: #999; margin-top: 20px; }
+        .business-name { color: #a1887f; font-size: 1.2em; margin-bottom: 10px; display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <span class="business-name">{{ biz_name }}</span>
+        <h2>حجز موعد جديد</h2>
+        
+        <form action="/submit_booking" method="POST">
+            
+            <input type="hidden" name="owner_id" value="{{ owner_id }}">
+            <input type="hidden" name="serviceName" id="serviceNameInput">
+
+            <label>الاسم بالكامل:</label>
+            <input type="text" name="customer_name" required placeholder="أدخل اسمك هنا">
+
+            <label>رقم جوالك (للتواصل):</label>
+            <input type="tel" name="customer_phone" required placeholder="05xxxxxxxx">
+
+            <label>اختر الخدمة:</label>
+            <select name="service_id" id="serviceSelect" required onchange="updateServiceDetails()">
+                <option value="" disabled selected>-- اختر من الخدمات المتاحة --</option>
+                {% for service in services %}
+                    <option value="{{ service.id }}" 
+                            data-name="{{ service.name }}"
+                            data-desc="{{ service.description or '' }}" 
+                            data-duration="{{ service.duration or '' }}">
+                        {{ service.name }} - ({{ service.price }} ريال)
+                    </option>
+                {% endfor %}
+            </select>
+
+            <div id="serviceDescDisplay"></div>
+
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 2;">
+                    <label>تاريخ الموعد:</label>
+                    <input type="date" name="booking_date" id="dateInput" required>
+                </div>
+                <div style="flex: 1.5;">
+                    <label>الوقت:</label>
+                    <input type="time" name="booking_time" required>
+                </div>
+            </div>
+
+            <button type="submit">تأكيد طلب الحجز</button>
+        </form>
+        
+        <p class="footer-text">سيتم مراجعة طلبك وتأكيده من قبل الإدارة فوراً</p>
+    </div>
+
+    <script>
+        function updateServiceDetails() {
+            const select = document.getElementById('serviceSelect');
+            const display = document.getElementById('serviceDescDisplay');
+            const serviceNameInput = document.getElementById('serviceNameInput');
+            const selectedOption = select.options[select.selectedIndex];
+            
+            const name = selectedOption.getAttribute('data-name');
+            const desc = selectedOption.getAttribute('data-desc');
+            const duration = selectedOption.getAttribute('data-duration');
+            
+            // تحديث الحقل المخفي باسم الخدمة لإرساله لقاعدة البيانات
+            serviceNameInput.value = name;
+
+            let detailsHtml = "";
+            if (desc) detailsHtml += `<span>${desc}</span>`;
+            if (duration) detailsHtml += (desc ? "<br>" : "") + `<span style="font-size: 0.9em;">⏱ المدة المتوقعة: ${duration}</span>`;
+            
+            display.innerHTML = detailsHtml;
+        }
+
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('dateInput').setAttribute('min', today);
+    </script>
+
+</body>
+</html>
